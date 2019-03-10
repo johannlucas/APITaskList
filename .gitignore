@@ -240,7 +240,6 @@ Backup*/
 UpgradeLog*.XML
 UpgradeLog*.htm
 ServiceFabricBackup/
-*.rptproj.bak
 
 # SQL Server files
 *.mdf
@@ -328,3 +327,8 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+
+APITaskList/appsettings.json
+APITaskList/appsettings.Development.json
+
+*.sln

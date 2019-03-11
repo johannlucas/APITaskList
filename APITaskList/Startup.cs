@@ -20,6 +20,17 @@ namespace APITaskList
         {
             services.AddMvc();
             services.AddDbContext<DataContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("Azure")));
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllHeaders",
+                      builder =>
+                      {
+                          builder.AllowAnyOrigin()
+                                 .AllowAnyHeader()
+                                 .AllowAnyMethod();
+                      });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -29,6 +40,7 @@ namespace APITaskList
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("AllowAllHeaders");
             app.UseMvc();
         }
     }

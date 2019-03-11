@@ -2,10 +2,12 @@
 using APITaskList.Data;
 using Microsoft.AspNetCore.Mvc;
 using APITaskList.Models;
+using System.Web.Http.Cors;
 
 namespace APITaskList.Controllers
 {
     [Produces("application/json")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TasksController : Controller
     {
         private readonly DataContext _context;

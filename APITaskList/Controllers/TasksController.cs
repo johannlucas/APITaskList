@@ -37,7 +37,7 @@ namespace APITaskList.Controllers
         [Route("v1/tasks")]
         public IActionResult Get()
         {
-            return Ok(_context.Task.ToList());
+            return Ok(_context.Task.Where(x => x.Delete_At == null).ToList());
         }
 
         [HttpGet]
@@ -49,7 +49,7 @@ namespace APITaskList.Controllers
 
         [HttpPut]
         [Route("v1/tasks/{id}")]
-        public IActionResult Put(int id, [FromBody]Task task)
+        public IActionResult Put(long id, [FromBody]Task task)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace APITaskList.Controllers
 
         [HttpDelete]
         [Route("v1/tasks/{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(long id)
         {
             try
             {
